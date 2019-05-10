@@ -13,10 +13,10 @@ import za.co.zuul.filter.RouteFilter;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableZuulProxy
-public class ApiGatewayRestApplication {
+public class ZuulProxyRestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGatewayRestApplication.class, args);
+		SpringApplication.run(ZuulProxyRestApplication.class, args);
 	}
 
 	@Bean

@@ -15,7 +15,7 @@ public class Account {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long accountId;
+    private Long id;
 
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;

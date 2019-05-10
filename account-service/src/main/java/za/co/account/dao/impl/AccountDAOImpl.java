@@ -18,7 +18,7 @@ public class AccountDAOImpl implements AccountDAO {
 
     @Override
     public Account createAccount(Account account) {
-        return accountRepository.save(account);
+        return accountRepository.saveAndFlush(account);
     }
 
     @Override

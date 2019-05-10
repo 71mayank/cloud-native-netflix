@@ -29,7 +29,7 @@ public class BankController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @GetMapping("/bank/{id}")
-    public ResponseEntity<BankOutboundPayload> getAccountById(@Valid @PathVariable Long id) {
+    public ResponseEntity<String> getAccountById(@Valid @PathVariable Long id) {
         return accountServiceImpl.getAccountById(id);
     }
 
