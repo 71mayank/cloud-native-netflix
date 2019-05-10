@@ -16,6 +16,7 @@
         <module>config-server</module>
         <module>discovery-service</module>
         <module>zuul-service</module>
+        <module>spring-boot-admin</module>
     </modules>
 
 </project>
