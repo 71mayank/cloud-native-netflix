@@ -1,5 +1,6 @@
 package za.co.account.gateway;
 
+import com.netflix.hystrix.exception.HystrixTimeoutException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -7,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class BankGatewayFallbackService implements BankGateway {
     @Override
-    public String getAccountDetailsByAccountId(Long accountId) {
-        log.error("bank-service is down at the moment");
-        return null;
+    public String getAccountDetailsByAccountId(Long accountId) throws HystrixTimeoutException {
+        throw new HystrixTimeoutException();
+
     }
 }

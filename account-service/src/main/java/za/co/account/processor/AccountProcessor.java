@@ -1,9 +1,11 @@
 package za.co.account.processor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.netflix.hystrix.exception.HystrixTimeoutException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.co.account.dao.impl.AccountDAOImpl;
+import za.co.account.exception.AccountNotFoundException;
 import za.co.account.gateway.BankGateway;
 import za.co.account.model.Account;
 import za.co.account.outbound.AccountOutboundPayload;
@@ -25,7 +27,7 @@ public class AccountProcessor {
     @Autowired
     ObjectMapper objectMapper;
 
-    public AccountOutboundPayload createAccount(Long id) throws IOException {
+    public AccountOutboundPayload createAccount(Long id) throws IOException, HystrixTimeoutException {
         AccountOutboundPayload accountOutboundPayload = objectMapper.readValue(bankGateway.getAccountDetailsByAccountId(id), AccountOutboundPayload.class);
         Account account = applicationDAOImpl.createAccount(buildAccountEntityFromAccountOutboundPayload(accountOutboundPayload));
         return mapAccountEntityToAccountOutboundPayload(account);
